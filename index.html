@@ -148,6 +148,76 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-PHP环境变量配置以及sublime text（PHP编译器）配置php环境" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/26/PHP%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8Asublime%20text%EF%BC%88PHP%E7%BC%96%E8%AF%91%E5%99%A8%EF%BC%89%E9%85%8D%E7%BD%AEphp%E7%8E%AF%E5%A2%83/">PHP环境变量配置以及sublime text（PHP编译器）配置php环境</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/26/PHP%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8Asublime%20text%EF%BC%88PHP%E7%BC%96%E8%AF%91%E5%99%A8%EF%BC%89%E9%85%8D%E7%BD%AEphp%E7%8E%AF%E5%A2%83/" class="archive-article-date">
+  	<time datetime="2020-03-26T04:40:40.936Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="PHP环境安装及配置"><a href="#PHP环境安装及配置" class="headerlink" title="PHP环境安装及配置"></a>PHP环境安装及配置</h3><p>比较适合的还是phpstudy，直接官网下载就可以，版本不能太高。<br>安装好之后需要配置环境变量path：右击 “电脑”–属性–&gt;高级系统设置–&gt;环境变量–&gt;打开用户变量和系统变量里的path。<img src="https://img-blog.csdnimg.cn/2020032611581593.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>随后需要在电脑环境中添加php.exe所在位置。<img src="https://img-blog.csdnimg.cn/20200326120030928.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70" alt=""><br>箭头所指的就是我自己的php.exe所在位置，添加好之后点击确定。最后确认一下是否安装成功：windows+r 输入cmd打开命令函，输入php-v<img src="https://img-blog.csdnimg.cn/20200326120544478.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>这样就算是配置成功！！</p>
+<h3 id="sublime-text中配置PHP"><a href="#sublime-text中配置PHP" class="headerlink" title="sublime text中配置PHP"></a>sublime text中配置PHP</h3><p>打开sublime text ，找到New build System，打开。<br><img src="https://img-blog.csdnimg.cn/20200326122532296.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>之后会出现这样的代码：<img src="https://img-blog.csdnimg.cn/20200326122837187.png" alt="在这里插入图片描述"><br>将里面的代码改为：</p>
+<p>{</p>
+<pre><code>&quot;cmd&quot;:[&quot;php&quot;,&quot;$file&quot;],
+
+&quot;file_regex&quot;:&quot;php$&quot;,
+
+&quot;selector&quot;:&quot;source.php&quot;</code></pre><p> }<br>    然后Ctrl+s保存到默认目录下，修改文件名为：php.sublime-build<br>再新建一个文件，直接可以写代码了，保存代码的时候文件要加后缀名.php<br>Ctrl+B即可运行代码！</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/26/PHP%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8Asublime%20text%EF%BC%88PHP%E7%BC%96%E8%AF%91%E5%99%A8%EF%BC%89%E9%85%8D%E7%BD%AEphp%E7%8E%AF%E5%A2%83/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-写hexo博客时好用的工具！(1)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
