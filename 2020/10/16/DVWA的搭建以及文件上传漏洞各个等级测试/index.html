@@ -6,20 +6,37 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://ZC1109.github.io">
-  <title>释</title>
+  <title>DVWA的搭建以及文件上传漏洞各个等级测试 | 释</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-    
-    <!-- <meta name="keywords" content="">
-    <meta name="description" content=""> -->
-  
-  <meta property="og:type" content="website">
-<meta property="og:title" content="释">
-<meta property="og:url" content="https://zc1109.github.io/index.html">
+  <meta name="description" content="@[TOC] DVWA的安装环境phpstudy 集成了PHP、MySQL、php-mysql等应用或组件。用起来十分方便。（这里就不详细介绍phpstudy的安装教程了）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DVWA的搭建以及文件上传漏洞各个等级测试">
+<meta property="og:url" content="https://zc1109.github.io/2020/10/16/DVWA%E7%9A%84%E6%90%AD%E5%BB%BA%E4%BB%A5%E5%8F%8A%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E5%90%84%E4%B8%AA%E7%AD%89%E7%BA%A7%E6%B5%8B%E8%AF%95/index.html">
 <meta property="og:site_name" content="释">
+<meta property="og:description" content="@[TOC] DVWA的安装环境phpstudy 集成了PHP、MySQL、php-mysql等应用或组件。用起来十分方便。（这里就不详细介绍phpstudy的安装教程了）">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201011101836495.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201011102321546.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201011102517305.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201011104015204.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201011110852658.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201011111125282.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201011110910515.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201011112727656.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201011155110928.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201011155335564.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201011163755740.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201011171008894.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201011171035666.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201011171419596.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201016111014526.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201016111718279.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="article:published_time" content="2020-10-16T03:34:12.239Z">
+<meta property="article:modified_time" content="2020-10-16T03:34:08.965Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20201011101836495.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70#pic_center">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -182,411 +199,25 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-
-  
-    <article id="post-sqli-labs闯关1_4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-DVWA的搭建以及文件上传漏洞各个等级测试" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/10/16/sqli-labs%E9%97%AF%E5%85%B31_4/" target="_blank">sqli-labs闯关1_4</a>
-  
+    <h1 class="article-title" itemprop="name">
+      DVWA的搭建以及文件上传漏洞各个等级测试
     </h1>
   
 
 
   
   
-<a href="/2020/10/16/sqli-labs%E9%97%AF%E5%85%B31_4/" class="archive-article-date">
-        <time datetime="2020-10-16T03:36:11.306Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-16</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p><strong>LESS–1（错误型GET单引号字符型注入）</strong></p>
-    
-    <a class="article-more-a" href="/2020/10/16/sqli-labs%E9%97%AF%E5%85%B31_4/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/10/16/sqli-labs%E9%97%AF%E5%85%B31_4/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
         
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
 
-
-
-
-  
-    <article id="post-【强网杯2019】随便注" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/10/16/%E3%80%90%E5%BC%BA%E7%BD%91%E6%9D%AF2019%E3%80%91%E9%9A%8F%E4%BE%BF%E6%B3%A8/" target="_blank">【强网杯2019】随便注</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/10/16/%E3%80%90%E5%BC%BA%E7%BD%91%E6%9D%AF2019%E3%80%91%E9%9A%8F%E4%BE%BF%E6%B3%A8/" class="archive-article-date">
-        <time datetime="2020-10-16T03:35:51.819Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-16</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p><strong>题目：</strong></p>
-    
-    <a class="article-more-a" href="/2020/10/16/%E3%80%90%E5%BC%BA%E7%BD%91%E6%9D%AF2019%E3%80%91%E9%9A%8F%E4%BE%BF%E6%B3%A8/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/10/16/%E3%80%90%E5%BC%BA%E7%BD%91%E6%9D%AF2019%E3%80%91%E9%9A%8F%E4%BE%BF%E6%B3%A8/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-【极客大挑战2019LoveSQL】" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/10/16/%E3%80%90%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019LoveSQL%E3%80%91/" target="_blank">【极客大挑战2019LoveSQL】</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/10/16/%E3%80%90%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019LoveSQL%E3%80%91/" class="archive-article-date">
-        <time datetime="2020-10-16T03:35:22.452Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-16</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p><strong>题目地址</strong>：<a href="http://b7f87fb9-2d9b-47f3-8c81-31d54bda9fe7.node3.buuoj.cn" target="_blank" rel="noopener">http://b7f87fb9-2d9b-47f3-8c81-31d54bda9fe7.node3.buuoj.cn</a></p>
-    
-    <a class="article-more-a" href="/2020/10/16/%E3%80%90%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019LoveSQL%E3%80%91/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/10/16/%E3%80%90%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019LoveSQL%E3%80%91/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-RSA密码的原理及做题总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/10/16/RSA%E5%AF%86%E7%A0%81%E7%9A%84%E5%8E%9F%E7%90%86%E5%8F%8A%E5%81%9A%E9%A2%98%E6%80%BB%E7%BB%93/" target="_blank">RSA密码的原理及做题总结</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/10/16/RSA%E5%AF%86%E7%A0%81%E7%9A%84%E5%8E%9F%E7%90%86%E5%8F%8A%E5%81%9A%E9%A2%98%E6%80%BB%E7%BB%93/" class="archive-article-date">
-        <time datetime="2020-10-16T03:35:08.343Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-16</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p> @[TOC]<br>    <strong>RSA算法</strong>：是应用最广泛的公钥密码算法<br>
-    
-    <a class="article-more-a" href="/2020/10/16/RSA%E5%AF%86%E7%A0%81%E7%9A%84%E5%8E%9F%E7%90%86%E5%8F%8A%E5%81%9A%E9%A2%98%E6%80%BB%E7%BB%93/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/10/16/RSA%E5%AF%86%E7%A0%81%E7%9A%84%E5%8E%9F%E7%90%86%E5%8F%8A%E5%81%9A%E9%A2%98%E6%80%BB%E7%BB%93/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Sqli-labs第5_8关详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/10/16/Sqli-labs%E7%AC%AC5_8%E5%85%B3%E8%AF%A6%E8%A7%A3/" target="_blank">Sqli-labs第5_8关详解</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/10/16/Sqli-labs%E7%AC%AC5_8%E5%85%B3%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
-        <time datetime="2020-10-16T03:34:46.569Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-16</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p> @[TOC]</p>
-<h2 id="第五关"><a href="#第五关" class="headerlink" title="第五关"></a>第五关</h2><p>当输入<code>?id=1</code>时显示下面的页面</p>
-    
-    <a class="article-more-a" href="/2020/10/16/Sqli-labs%E7%AC%AC5_8%E5%85%B3%E8%AF%A6%E8%A7%A3/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/10/16/Sqli-labs%E7%AC%AC5_8%E5%85%B3%E8%AF%A6%E8%A7%A3/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-DVWA的搭建以及文件上传漏洞各个等级测试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/10/16/DVWA%E7%9A%84%E6%90%AD%E5%BB%BA%E4%BB%A5%E5%8F%8A%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E5%90%84%E4%B8%AA%E7%AD%89%E7%BA%A7%E6%B5%8B%E8%AF%95/" target="_blank">DVWA的搭建以及文件上传漏洞各个等级测试</a>
-  
-    </h1>
-  
-
-
-  
-  
 <a href="/2020/10/16/DVWA%E7%9A%84%E6%90%AD%E5%BB%BA%E4%BB%A5%E5%8F%8A%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E5%90%84%E4%B8%AA%E7%AD%89%E7%BA%A7%E6%B5%8B%E8%AF%95/" class="archive-article-date">
         <time datetime="2020-10-16T03:34:12.239Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-16</time>
 </a>
@@ -594,6 +225,27 @@
   
   
     
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">1.6k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">6分</span>
+    </span>
+  </span>
+</div>
+
 
   
   </header>
@@ -602,13 +254,60 @@
     
     <p>@[TOC]</p>
 <h2 id="DVWA的安装环境"><a href="#DVWA的安装环境" class="headerlink" title="DVWA的安装环境"></a>DVWA的安装环境</h2><p><code>phpstudy</code> 集成了PHP、MySQL、php-mysql等应用或组件。用起来十分方便。（这里就不详细介绍phpstudy的安装教程了）</p>
-    
-    <a class="article-more-a" href="/2020/10/16/DVWA%E7%9A%84%E6%90%AD%E5%BB%BA%E4%BB%A5%E5%8F%8A%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E5%90%84%E4%B8%AA%E7%AD%89%E7%BA%A7%E6%B5%8B%E8%AF%95/#more">more >></a>
-    
-    
+<a id="more"></a>
+
+<h2 id="下载DVWA"><a href="#下载DVWA" class="headerlink" title="下载DVWA"></a>下载DVWA</h2><p><a href="http://www.dvwa.co.uk/" target="_blank" rel="noopener">DVWA下载地址</a><br><img src="https://img-blog.csdnimg.cn/20201011101836495.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>将其安装包放在phpstudy的www目录下，找到<code>config.inc.php.dist</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20201011102321546.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>并粘贴里边的内容，创建一个新的php文件<code>config.inc.php</code><br>我是已经创建好的。<br>用记事本打开<code>config.inc.php</code> 文件修改以下内容：$_DVWA[ ‘db_password’ ] = ‘p@ssw0rd’; 将引号里面的p@ssw0rd改成 root</p>
+<p><img src="https://img-blog.csdnimg.cn/20201011102517305.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>保存后打开电脑浏览器 地址栏输入127.0.0.1/DVWA-master/ 按下回车，然后点击网页底下的 Create/Reset Database 按钮会跳转到登录页面<br>默认账号：admin<br>密码：password<br>输入后按回车进入<br>总体安装起来是非常简单的</p>
+<h2 id="DVWA——File-Upload"><a href="#DVWA——File-Upload" class="headerlink" title="DVWA——File Upload"></a>DVWA——File Upload</h2><p>File Upload，即文件上传漏洞， 文件上传漏洞是指由于程序员在对用户文件上传部分的控制不足或者处理缺陷，而导致的用户可以越过其本身权限向服务器上上传可执行的动态脚本文件。这里上传的文件可以是木马，病毒，恶意脚本或者WebShell等。这种攻击方式是最为直接和有效的，“文件上传”本身没有问题，有问题的是文件上传后，服务器怎么处理、解释文件。如果服务器的处理逻辑做的不够安全，则会导致严重的后果。</p>
+<p><strong>自我感受</strong><br>当我在bilibili上面看大师傅们的演示真的令我十分震撼，哈哈哈哈也可能是因为我太菜了吧！<br>获取服务器的WebShell权限来查看/上传/下载对方文件，查看数据库信息，执行命令，甚至恶搞等等，可以说是能够执行任意操作，实在是厉害，自愧不如。</p>
+<p><strong>风险点</strong></p>
+<p>·注册/修改个人信息处（上传头像）<br>·敏感身份认证处（身份证照片/银行卡照片/个人照片……）【多为·金融/借贷应用】<br>·订单评价反馈处（上传商品照片）【淘宝/京东……】<br>·朋友圈/空间<br>·所有能上传操作的地方</p>
+<p><strong>文件上传漏洞的利用是有限制条件：</strong><br>一、能够成功上传木马文件<br>二、上传文件必须能够被执行<br>三、上传文件的路径必须可知</p>
+<h2 id="Low级别测试"><a href="#Low级别测试" class="headerlink" title="Low级别测试"></a>Low级别测试</h2><p>源码：<img src="https://img-blog.csdnimg.cn/20201011104015204.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br><code>DVWA_WEB_PAGE_TO_ROOT</code><br>为网页的根目录<br><code>target_path</code><br>变量为上传文件的绝对路径<br><code>basename( $_FILES[&#39;uploaded&#39;][&#39;name&#39;])</code><br>将文件中已经uploaded的文件的名字取出并加入到target_path变量中。<br>if语句判断文件是否上传到指定的路径中，若没有则显示没有上传。<br>服务器对上传文件的类型、内容没有做任何的检查、过滤，存在明显的文件上传漏洞，生成上传路径后，服务器会检查是否上传成功并返回相应提示信息。<br>此级别没有对上传文件的类型进行任何的过滤，也就是可以随意上传php文件。<br>构造一句话木马</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php @eval($_POST[&#39;A&#39;]);?&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20201011110852658.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>这个便是我们上传文件的部分路径<br>打开蚁剑，添加数据:<br><img src="https://img-blog.csdnimg.cn/20201011111125282.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>连接成功，打开便可以看到以下界面。<br><img src="https://img-blog.csdnimg.cn/20201011110910515.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h2 id="medium级别测试"><a href="#medium级别测试" class="headerlink" title="medium级别测试"></a>medium级别测试</h2><p>源码：<img src="https://img-blog.csdnimg.cn/20201011112727656.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>可以对比出来中级的多了限制条件，只能传JPEG或者png图片并且还有大小限制。</p>
+<p>那么我们就通过抓包，将type类型改为image/jpeg。<br>上传文件抓包：<br><img src="https://img-blog.csdnimg.cn/20201011155110928.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>然后点击forward，回到靶场，发现上传成功：<br><img src="https://img-blog.csdnimg.cn/20201011155335564.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>打开蚁剑，添加数据，连接，成功<br><img src="https://img-blog.csdnimg.cn/20201011163755740.png#pic_center" alt="在这里插入图片描述"></p>
+<h2 id="High级别测试"><a href="#High级别测试" class="headerlink" title="High级别测试"></a>High级别测试</h2><p>源码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">if( isset( $_POST[ &#39;Upload&#39; ] ) ) &#123;</span><br><span class="line">    &#x2F;&#x2F; Where are we going to be writing to?</span><br><span class="line">    $target_path  &#x3D; DVWA_WEB_PAGE_TO_ROOT . &quot;hackable&#x2F;uploads&#x2F;&quot;;</span><br><span class="line">    $target_path .&#x3D; basename( $_FILES[ &#39;uploaded&#39; ][ &#39;name&#39; ] );</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; File information</span><br><span class="line">    $uploaded_name &#x3D; $_FILES[ &#39;uploaded&#39; ][ &#39;name&#39; ];</span><br><span class="line">    $uploaded_ext  &#x3D; substr( $uploaded_name, strrpos( $uploaded_name, &#39;.&#39; ) + 1);</span><br><span class="line">    $uploaded_size &#x3D; $_FILES[ &#39;uploaded&#39; ][ &#39;size&#39; ];</span><br><span class="line">    $uploaded_tmp  &#x3D; $_FILES[ &#39;uploaded&#39; ][ &#39;tmp_name&#39; ];</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; Is it an image?</span><br><span class="line">    if( ( strtolower( $uploaded_ext ) &#x3D;&#x3D; &quot;jpg&quot; || strtolower( $uploaded_ext ) &#x3D;&#x3D; &quot;jpeg&quot; || strtolower( $uploaded_ext ) &#x3D;&#x3D; &quot;png&quot; ) &amp;&amp;</span><br><span class="line">        ( $uploaded_size &lt; 100000 ) &amp;&amp;</span><br><span class="line">        getimagesize( $uploaded_tmp ) ) &#123;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; Can we move the file to the upload folder?</span><br><span class="line">        if( !move_uploaded_file( $uploaded_tmp, $target_path ) ) &#123;</span><br><span class="line">            &#x2F;&#x2F; No</span><br><span class="line">            echo &#39;&lt;pre&gt;Your image was not uploaded.&lt;&#x2F;pre&gt;&#39;;</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            &#x2F;&#x2F; Yes!</span><br><span class="line">            echo &quot;&lt;pre&gt;&#123;$target_path&#125; succesfully uploaded!&lt;&#x2F;pre&gt;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        &#x2F;&#x2F; Invalid file</span><br><span class="line">        echo &#39;&lt;pre&gt;Your image was not uploaded. We can only accept JPEG or PNG images.&lt;&#x2F;pre&gt;&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>函数解析</strong></p>
+<p><strong>strrpos(string,find,start)</strong><br>strrpos()函数查找<code>.</code>出现在 $ uploaded_name的位置然后加1，再利用substr()函数从变量$uploaded_name的指定位置截取部分字符串。所以这段代码的作用就是为了截取上传文件的后缀名.</p>
+<p><strong>strtolower()</strong><br>将无论是大写或小写的后缀名全改为小写，以防大小写绕过</p>
+<p><strong>getimagesize(string filename)</strong><br>函数会通过读取文件头，返回图片的长、宽等信息，如果没有相关的图片文件头，函数会报错。<br>可以看到，High级别的代码读取文件名中最后一个“.”后的字符串，期望通过文件名来限制文件类型，因此要求上传文件名形式必须是”.jpg”、”.jpeg” 、”*.png”之一。同时，getimagesize函数更是限制了上传文件的文件头必须为图像类型。</p>
+<h3 id="制作一句话图片木马"><a href="#制作一句话图片木马" class="headerlink" title="制作一句话图片木马"></a>制作一句话图片木马</h3><p><img src="https://img-blog.csdnimg.cn/20201011171008894.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>上传图片：<img src="https://img-blog.csdnimg.cn/20201011171035666.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201011171419596.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>绕过成功，但我通过蚁剑却连接不上，经过查找资料最后发现需要进行php代码解析，就是将自己的上传的文件（无论是什么类型的文件）以php代码执行；<br>下面我来补充一下使用蚁剑进行high等级shell连接：</p>
+<p>还是需要制作一句话图片木马，上文已经讲过了，这里我就不再多说<br><img src="https://img-blog.csdnimg.cn/20201016111014526.png#pic_center" alt="在这里插入图片描述"><br>3.jpg就是我所使用1.jpg和2.php制作的一句话木马；<br>然后需要编写一个include()php代码<a href="https://blog.csdn.net/Songbook/article/details/79630777?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522160281146819195240457762%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=160281146819195240457762&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-1-79630777.pc_first_rank_v2_rank_v28&utm_term=include&spm=1018.2118.3001.4187" target="_blank" rel="noopener">关于include的用法</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$a&#x3D;$_GET[&#39;id&#39;];</span><br><span class="line">include($a)</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>命名为a.php,接下来就通过文件包含(a.php来包含我们所制作的的一句话木马图片，也就是3.jpg)来使用蚁剑连接：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;127.0.0.1&#x2F;DVWA-master&#x2F;hackable&#x2F;uploads&#x2F;a.php?id&#x3D;3.jpg</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20201016111718279.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1OTI3ODE5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>连接成功！！！！！！</p>
 
     
 
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://ZC1109.github.io/2020/10/16/DVWA的搭建以及文件上传漏洞各个等级测试/" title="DVWA的搭建以及文件上传漏洞各个等级测试" target="_blank">https://ZC1109.github.io/2020/10/16/DVWA的搭建以及文件上传漏洞各个等级测试/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
     
 
   </div>
@@ -618,16 +317,85 @@
     
 
     
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/10/16/DVWA%E7%9A%84%E6%90%AD%E5%BB%BA%E4%BB%A5%E5%8F%8A%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E5%90%84%E4%B8%AA%E7%AD%89%E7%BA%A7%E6%B5%8B%E8%AF%95/">展开全文 >></a>
-    </p>
+
     
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://zc1109.github.io/2020/10/16/DVWA%E7%9A%84%E6%90%AD%E5%BB%BA%E4%BB%A5%E5%8F%8A%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E5%90%84%E4%B8%AA%E7%AD%89%E7%BA%A7%E6%B5%8B%E8%AF%95/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
 
     
     <div class="clearfix"></div>
   </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
+  
+    <a href="/2020/10/16/Sqli-labs%E7%AC%AC5_8%E5%85%B3%E8%AF%A6%E8%A7%A3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Sqli-labs第5_8关详解
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/10/16/kail%E8%BF%9E%E6%8E%A5Xshell%E4%BB%A5%E5%8F%8Awindows%E4%B8%8Ekali%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%96%87%E4%BB%B6%E4%BA%92%E4%BC%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">kail连接Xshell以及windows与kali服务端文件互传</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -648,321 +416,14 @@
 
 
 
-  
-    <article id="post-kail连接Xshell以及windows与kali服务端文件互传" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/10/16/kail%E8%BF%9E%E6%8E%A5Xshell%E4%BB%A5%E5%8F%8Awindows%E4%B8%8Ekali%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%96%87%E4%BB%B6%E4%BA%92%E4%BC%A0/" target="_blank">kail连接Xshell以及windows与kali服务端文件互传</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/10/16/kail%E8%BF%9E%E6%8E%A5Xshell%E4%BB%A5%E5%8F%8Awindows%E4%B8%8Ekali%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%96%87%E4%BB%B6%E4%BA%92%E4%BC%A0/" class="archive-article-date">
-        <time datetime="2020-10-16T03:33:22.191Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-16</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>@[TOC]</p>
-<h2 id="kali与Xshell建立连接"><a href="#kali与Xshell建立连接" class="headerlink" title="kali与Xshell建立连接"></a>kali与Xshell建立连接</h2>
-    
-    <a class="article-more-a" href="/2020/10/16/kail%E8%BF%9E%E6%8E%A5Xshell%E4%BB%A5%E5%8F%8Awindows%E4%B8%8Ekali%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%96%87%E4%BB%B6%E4%BA%92%E4%BC%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/10/16/kail%E8%BF%9E%E6%8E%A5Xshell%E4%BB%A5%E5%8F%8Awindows%E4%B8%8Ekali%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%96%87%E4%BB%B6%E4%BA%92%E4%BC%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
 
 
 
 
-  
-    <article id="post-了解PHP序列化与反序列化(1)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/05/13/%E4%BA%86%E8%A7%A3PHP%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96(1)/" target="_blank">了解PHP序列化与反序列化(1)</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/05/13/%E4%BA%86%E8%A7%A3PHP%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96(1)/" class="archive-article-date">
-        <time datetime="2020-05-13T08:19:32.808Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-13</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p><strong>序列化</strong>是将变量转百换为可保存或传输的字符串的过程；
-    
-    <a class="article-more-a" href="/2020/05/13/%E4%BA%86%E8%A7%A3PHP%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96(1)/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/05/13/%E4%BA%86%E8%A7%A3PHP%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96(1)/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
 
 
 
 
-  
-    <article id="post-一道简单密码的栅栏" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/04/20/%E4%B8%80%E9%81%93%E7%AE%80%E5%8D%95%E5%AF%86%E7%A0%81%E7%9A%84%E6%A0%85%E6%A0%8F/" target="_blank">一道简单密码的栅栏</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/04/20/%E4%B8%80%E9%81%93%E7%AE%80%E5%8D%95%E5%AF%86%E7%A0%81%E7%9A%84%E6%A0%85%E6%A0%8F/" class="archive-article-date">
-        <time datetime="2020-04-20T07:02:19.633Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>栅栏密码属于古典密码中最经典的移项式密码，
-    
-    <a class="article-more-a" href="/2020/04/20/%E4%B8%80%E9%81%93%E7%AE%80%E5%8D%95%E5%AF%86%E7%A0%81%E7%9A%84%E6%A0%85%E6%A0%8F/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/04/20/%E4%B8%80%E9%81%93%E7%AE%80%E5%8D%95%E5%AF%86%E7%A0%81%E7%9A%84%E6%A0%85%E6%A0%8F/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-CTF--图片隐写之修改图片宽和高" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2020/04/05/CTF--%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99%E4%B9%8B%E4%BF%AE%E6%94%B9%E5%9B%BE%E7%89%87%E5%AE%BD%E5%92%8C%E9%AB%98/" target="_blank">CTF--图片隐写之修改图片宽和高</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2020/04/05/CTF--%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99%E4%B9%8B%E4%BF%AE%E6%94%B9%E5%9B%BE%E7%89%87%E5%AE%BD%E5%92%8C%E9%AB%98/" class="archive-article-date">
-        <time datetime="2020-04-05T05:17:53.188Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-05</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h5 id="这也是做图片杂项时前几步需要考虑的，有时没有任何线索就去修改宽高"><a href="#这也是做图片杂项时前几步需要考虑的，有时没有任何线索就去修改宽高" class="headerlink" title="这也是做图片杂项时前几步需要考虑的，有时没有任何线索就去修改宽高"></a>这也是做图片杂项时前几步需要考虑的，有时没有任何线索就去修改宽高
-    
-    <a class="article-more-a" href="/2020/04/05/CTF--%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99%E4%B9%8B%E4%BF%AE%E6%94%B9%E5%9B%BE%E7%89%87%E5%AE%BD%E5%92%8C%E9%AB%98/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2020/04/05/CTF--%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99%E4%B9%8B%E4%BF%AE%E6%94%B9%E5%9B%BE%E7%89%87%E5%AE%BD%E5%92%8C%E9%AB%98/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -1002,8 +463,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
